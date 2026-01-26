@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.h1-font {
+  font-family: Linksans Linksansvf, sans-serif;
+  font-size: 5.28vw;
+  font-weight: 800;
+  line-height: 107%;
+}
