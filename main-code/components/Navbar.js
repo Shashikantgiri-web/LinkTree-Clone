@@ -15,9 +15,9 @@ const Navbar = () => {
                 <li className="text-[18px]">Pricing</li>
             </ul>
         </div>
-        <div className='w-[30%] h-[99%] flex flex-row justify-center items-center gap-1.5'>
-            <button className='w-[25%] h-[80%] flex justify-center items-center bg-gray-600 text-white rounded-full text-sm'>Sign In</button>
-            <button className='w-[25%] h-[80%] flex justify-center items-center bg-blue-600 text-white rounded-full text-sm'>login</button>
+        <div className='w-[30%] h-[99%] flex flex-row justify-end items-center gap-1.5'>
+            <button className='w-[25%] h-[80%] flex justify-center items-center bg-gray-200 text-white rounded-[10px] text-sm'>login</button>
+            <button className='w-[25%] h-[80%] flex justify-center items-center bg-black text-white rounded-[10px] text-sm'>Sign up for free</button>
         </div>
     </nav>
   )
