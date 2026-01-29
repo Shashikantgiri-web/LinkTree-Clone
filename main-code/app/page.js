@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="w-full h-auto flex flex-col justify-start items-center gap-10 bg-white text-black">
-      <section className="w-full h-[105vh] flex flex-row justify-start items-center bg-[#254f1a] text-[#254f1a]">
+      <section className="w-full h-[105vh] flex flex-row justify-start items-center bg-[#254f1a] text-[#d2e823]">
         <div className="w-[50%] h-[80%] flex flex-col justify-center items-end pl-20 gap-2.5">
           <h1 className="w-full h-[50%] flex justify-center items-end text-[73px] h1-font">A link in bio built for you.</h1>
           <p className="w-full h-[15%] flex justify-center items-center font-[17px] section-1-p">Join 70M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.</p>
