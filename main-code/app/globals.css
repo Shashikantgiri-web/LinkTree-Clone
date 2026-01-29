@@ -31,3 +31,12 @@ body {
   font-weight: 800;
   line-height: 107%;
 }
+
+.section-1-p {
+  font-variation-settings: "wght" 418;
+  margin-bottom: 0;
+  font-family: Linksans Linksansvf, sans-serif;
+  font-size: 1.29vw;
+  font-weight: 400;
+  line-height: 150%;
+}
