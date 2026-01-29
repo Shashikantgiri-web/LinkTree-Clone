@@ -9,7 +9,7 @@ export default function Home() {
           <p className="w-full h-[15%] flex justify-center items-center font-[17px] section-1-p">Join 70M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.</p>
           <div className="w-full h-[35%] flex flex-row justify-start items-start gap-4">
             <input type="email" name="email" id="" placeholder="linktr.ee/" className="w-[60%] h-12.5 rounded-[10px] bg-white border border-gray-300 px-4 py-2 text-gray-500 " />
-            <button className="w-[40%] h-12.5 rounded-[10px] bg-[#254f1a] text-white border border-gray-300 px-4 py-2 ">Get Started</button>
+            <button className="w-[40%] h-12.5 rounded-[10px] bg-[#ec74f7] text-white border border-gray-300 px-4 py-2 ">Get Started</button>
           </div>
         </div>
         <div className="w-[50%] h-[80%] flex justify-center items-center overflow-y-hidden">
