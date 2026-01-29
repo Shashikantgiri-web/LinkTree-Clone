@@ -13,7 +13,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-[50%] h-[80%] flex justify-center items-center overflow-y-hidden">
-          <Image src="/section-1-img.png" alt="section-1-img" className="w-[80%] h-[460px]"/>
+          <img src="/section-1-img.png" alt="section-1-img" className="w-[80%] h-[460px]"/>
         </div>
       </section>
       <section></section>
