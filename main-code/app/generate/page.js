@@ -2,8 +2,8 @@ import React from 'react'
 
 const generate = () => {
     return (
-        <section className='w-full h-auto grid grid-cols-2 items-center gap-2.5 bg-[#e9c0e9] text-[#261d39] overflow-y-scroll scrollbar-hide justify-center'>
-            <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl py-[10vh] gap-2">
+        <section className='w-full h-auto grid grid-cols-2 items-center gap-2.5 bg-[#e9c0e9] text-[#261d39] overflow-y-scroll scrollbar-hide justify-center' style={{display: 'grid', justifyContent: 'center', alignItems: 'center'}}>
+            <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl gap-2">
                 <div className='w-[99%] h-10 flex justify-center items-center'>
                     <h1 className='text-2xl font-bold'>Generate Your LinkTree</h1>
                 </div>
