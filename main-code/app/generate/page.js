@@ -2,7 +2,7 @@ import React from 'react'
 
 const generate = () => {
     return (
-        <section className='w-full h-auto grid grid-cols-2 justify-center items-center gap-2.5 bg-[#e9c0e9] text-[#d2e823]'>
+        <section className='w-full h-auto grid grid-cols-2 justify-center items-center gap-2.5 bg-[#e9c0e9] text-[#d2e823] overflow-y-scroll scrollbar-hide'>
             <div className="w-[99%] h-[105vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl gap-4 py-[10vh]">
                 <div className='w-[99%] h-10 flex justify-center items-center'>
                     <h1 className='text-2xl font-bold'>Generate Your LinkTree</h1>
