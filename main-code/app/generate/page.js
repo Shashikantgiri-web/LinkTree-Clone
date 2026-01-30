@@ -18,10 +18,12 @@ const generate = () => {
                     <div className="my-4 w-[45%] flex flex-col gap-2.5">
                         <input type="text" placeholder='Enter link text' className='w-[80%] h-15 pl-2.5 rounded-3xl bg-[#00489dd6] text-[#c66df1de] focus:ring-pink-400'/>
                         <input type="text" placeholder='Enter link' className='w-[80%] h-15 pl-2.5 rounded-3xl bg-[#00489dd6] text-[#c66df1de] focus:ring-pink-400'/>
+                        <button className='w-[80%] h-15 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500'>+ Add Link</button>
                     </div>
                 </div>
                 <div className='w-[99%] h-42.5 flex flex-col justify-start items-center'>
                     <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
+                    <input type="text" placeholder='Enter picture URL' className='w-[80%] h-15 pl-2.5 rounded-3xl bg-[#00489dd6] text-[#c66df1de] focus:ring-pink-400'/>
                 </div>
             </div>
             <div className="w-[99%] h-[105vh] flex justify-center items-center overflow-y-hidden">
