@@ -23,9 +23,9 @@ const generate = () => {
                 </div>
                 <div className='w-[99%] h-42.5 flex flex-col justify-start items-start gap-2.5'>
                     <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
-                    <div className="my-4 w-[99%] flex flex-row gap-2.5">
-                        <input type="text" placeholder='Enter picture URL' className='w-[45%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                        <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500'>Submit your linktree</button>
+                    <div className="my-4 w-[99%] flex flex-col gap-2.5">
+                        <input type="text" placeholder='Enter picture URL' className='w-[65%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+                        <button className='w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500'>Submit your linktree</button>
                     </div>
                 </div>
             </div>
