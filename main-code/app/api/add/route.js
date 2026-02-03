@@ -19,12 +19,6 @@ export async function POST(request) {
     const db = client.db("linktree")
     const collection = db.collection("links")
 
-    // Check if the short url exists
-    // const doc = await collection.findOne({ shortUrl: body.shortUrl })
-    // if (doc) {
-    //   return Response.json({ success: false, error: true, message: 'URL already exists!' })
-    // }
-
     const result = await collection.insertOne({
       "handle": body.handle,
       "linkText": body.linkText,
