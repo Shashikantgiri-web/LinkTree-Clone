@@ -39,7 +39,7 @@ const generate = () => {
 
     return (
         <>
-            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark" transition={Bounce} />
+            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark"  />
 
             <section className='w-full h-auto grid grid-cols-2 items-center gap-2.5 bg-[#e9c0e9] text-[#261d39] overflow-y-scroll scrollbar-hide justify-center' style={{ display: 'grid', justifyItems: 'center', alignItems: 'center' }}>
                 <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-1 px-1.5 gap-2">
