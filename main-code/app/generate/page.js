@@ -18,7 +18,6 @@ const generate = () => {
             "handle": handle,
             "linkText": text,
             "link": link,
-            "linkImages": linkImages
         });
 
         const requestOptions = {
@@ -57,7 +56,7 @@ const generate = () => {
                         <div className="my-4 w-[99%] flex flex-row gap-2.5">
                             <input type="text" placeholder='Enter link text' value={linkText || ""} onChange={(e) => setlinkText(e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
                             <input type="text" placeholder='Enter link' value={link || ""} onChange={(e) => setlink(e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink(handle, linkText, link, linkImages)}>+ Add Link</button>
+                            <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink(handle, linkText, link)}>+ Add Link</button>
                         </div>
                     </div>
                     <div className='w-[99%] h-42.5 flex flex-col justify-start items-start gap-2.5'>

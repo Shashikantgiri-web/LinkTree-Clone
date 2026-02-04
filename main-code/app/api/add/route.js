@@ -23,7 +23,6 @@ export async function POST(request) {
       "handle": body.handle,
       "linkText": body.linkText,
       "link": body.link,
-      "linkImages": body.linkImages
     })
 
     return Response.json({ success: true, error: false, message: 'Data received successfully', data: body })
