@@ -71,7 +71,7 @@ const generate = () => {
                             <input type="text" placeholder='choose your handle' value={handle || ""} onChange={(e) => sethandle(e.target.value)} className='w-[99%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
                         </div>
                     </div>
-                    <div className='w-[99%] h-35 flex flex-col justify-start items-start'>
+                    <div className='w-[99%] min-h-35 h-auto flex flex-col justify-start items-start'>
                         <h2 className='text-xl font-semibold'>Step 2: Add Your Links</h2>
                         {links.map((items, index) => {
                             return <div key={index} className="my-4 w-[99%] flex flex-row gap-2.5">
