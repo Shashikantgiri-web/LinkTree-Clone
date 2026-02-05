@@ -1,26 +1,41 @@
 "use client"
+import { init } from 'next/dist/compiled/webpack/webpack';
 import React from 'react'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const generate = () => {
-    // const [handle, sethandle] = useState("");
+    const [handle, sethandle] = useState("");
     // const [linkText, setlinkText] = useState("");
-    const [links, setLinks] = useState([{ "link": "", "linkText": "" }])
+    const [links, setLinks] = useState([{ text: "", url: "" }]);
     const [link, setlink] = useState("");
     const [linkImages, setlinkImages] = useState("");
 
-    const addLink = async (handle, text, link, linkImages) => {
+    const handleChange = (index, text, url) => {
+        setLinks((initialLinks) => {
+            return initialLinks.map((item, i) => {
+                if (i === index) {
+                    return { text, url };
+                }
+                else {
+                    return item;
+                }
+            });
+        });
+    };
+
+    const submitLink = async (handle, links, linkImages) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
             "handle": handle,
-            "linkText": text,
-            "link": link,
+            "links": links,
             "linkImages": linkImages
         });
+
+        console.log(raw);
 
         const requestOptions = {
             method: "POST",
@@ -57,20 +72,19 @@ const generate = () => {
                     </div>
                     <div className='w-[99%] h-35 flex flex-col justify-start items-start'>
                         <h2 className='text-xl font-semibold'>Step 2: Add Your Links</h2>
-                        {links.map((items, index)=> {
+                        {links.map((items, index) => {
                             return <div key={index} className="my-4 w-[99%] flex flex-row gap-2.5">
-                            <input type="text" placeholder='Enter link text' value={items.text || ""} onChange={(e) => setlink(index, e.target.value, e.target.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <input type="text" placeholder='Enter link' value={items.url || ""} onChange={(e) => setlink(index, e.target.value, e.target.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                        </div>
-                        }
-                        
-                        <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink(handle, linkText, link)}>+ Add Link</button>
+                                <input type="text" placeholder='Enter link text' value={items.text || ""} onChange={(e) => handleChange(index, e.target.value, items.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+                                <input type="text" placeholder='Enter link' value={items.url || ""} onChange={(e) => handleChange(index, items.text, e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+                            </div>
+                        })}
+                        <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => setLinks([...links, { text: "", url: "" }])}>+ Add Link</button>
                     </div>
                     <div className='w-[99%] h-42.5 flex flex-col justify-start items-start gap-2.5'>
                         <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
                         <div className="my-4 w-[99%] flex flex-col gap-2.5">
                             <input type="text" placeholder='Enter picture URL' value={linkImages || ""} onChange={(e) => setlinkImages(e.target.value)} className='w-[65%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <button className='w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' >Submit your linktree</button>
+                            <button className='w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink(handle, links, linkImages)}>Submit your linktree</button>
                         </div>
                     </div>
                 </div>
