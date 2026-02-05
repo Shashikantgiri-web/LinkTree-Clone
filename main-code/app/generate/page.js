@@ -28,7 +28,7 @@ const generate = () => {
         setLinks(links.concat([{ text: "", url: "" }]));
     }
 
-    const submitLink = async (handle, links, linkImages) => {
+    const submitLink = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
@@ -85,7 +85,7 @@ const generate = () => {
                         <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
                         <div className="my-4 w-[99%] flex flex-col gap-2.5">
                             <input type="text" placeholder='Enter picture URL' value={linkImages || ""} onChange={(e) => setlinkImages(e.target.value)} className='w-[65%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <button className='w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink(handle, links, linkImages)}>Submit your linktree</button>
+                            <button className='w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink()}>Submit your linktree</button>
                         </div>
                     </div>
                 </div>
