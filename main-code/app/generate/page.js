@@ -1,5 +1,4 @@
 "use client"
-import { init } from 'next/dist/compiled/webpack/webpack';
 import React from 'react'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const generate = () => {
     const [handle, sethandle] = useState("");
-    // const [linkText, setlinkText] = useState("");
     const [links, setLinks] = useState([{ text: "", url: "" }]);
     const [link, setlink] = useState("");
     const [linkImages, setlinkImages] = useState("");
@@ -53,8 +51,6 @@ const generate = () => {
         const result = await r.json()
         if (result.success) {
             toast.success("Link added successfully!")
-            // sethandle("");
-            // setlinkImages("");
         } else {
             toast.error("Failed to add link.")
         }
