@@ -5,8 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const generate = () => {
-    const [handle, sethandle] = useState("");
-    const [linkText, setlinkText] = useState("");
+    // const [handle, sethandle] = useState("");
+    // const [linkText, setlinkText] = useState("");
+    const [links, setLinks] = useState([{ "link": "", "linkText": "" }])
     const [link, setlink] = useState("");
     const [linkImages, setlinkImages] = useState("");
 
@@ -18,6 +19,7 @@ const generate = () => {
             "handle": handle,
             "linkText": text,
             "link": link,
+            "linkImages": linkImages
         });
 
         const requestOptions = {
@@ -31,14 +33,16 @@ const generate = () => {
         const result = await r.json()
         if (result.success) {
             toast.success("Link added successfully!")
+            // sethandle("");
+            // setlinkImages("");
         } else {
             toast.error("Failed to add link.")
-        }   
+        }
     }
 
     return (
         <>
-            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark"  />
+            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark" />
 
             <section className='w-full h-auto grid grid-cols-2 items-center gap-2.5 bg-[#e9c0e9] text-[#261d39] overflow-y-scroll scrollbar-hide justify-center' style={{ display: 'grid', justifyItems: 'center', alignItems: 'center' }}>
                 <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-1 px-1.5 gap-2">
@@ -51,13 +55,16 @@ const generate = () => {
                             <input type="text" placeholder='choose your handle' value={handle || ""} onChange={(e) => sethandle(e.target.value)} className='w-[99%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
                         </div>
                     </div>
-                    <div className='w-[99%] h-30.5 flex flex-col justify-start items-start'>
+                    <div className='w-[99%] h-35 flex flex-col justify-start items-start'>
                         <h2 className='text-xl font-semibold'>Step 2: Add Your Links</h2>
-                        <div className="my-4 w-[99%] flex flex-row gap-2.5">
-                            <input type="text" placeholder='Enter link text' value={linkText || ""} onChange={(e) => setlinkText(e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <input type="text" placeholder='Enter link' value={link || ""} onChange={(e) => setlink(e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink(handle, linkText, link)}>+ Add Link</button>
+                        {links.map((items, index)=> {
+                            return <div key={index} className="my-4 w-[99%] flex flex-row gap-2.5">
+                            <input type="text" placeholder='Enter link text' value={items.text || ""} onChange={(e) => setlink(index, e.target.value, e.target.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+                            <input type="text" placeholder='Enter link' value={items.url || ""} onChange={(e) => setlink(index, e.target.value, e.target.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
                         </div>
+                        }
+                        
+                        <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink(handle, linkText, link)}>+ Add Link</button>
                     </div>
                     <div className='w-[99%] h-42.5 flex flex-col justify-start items-start gap-2.5'>
                         <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
