@@ -55,7 +55,7 @@ const generate = () => {
             setLinks([{ text: "", url: "" }]); 
             setlinkImages("");
         } else {
-            toast.error("Failed to add link.")
+            toast.error(result.message)
         }
     }
 
