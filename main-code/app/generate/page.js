@@ -51,6 +51,9 @@ const generate = () => {
         const result = await r.json()
         if (result.success) {
             toast.success("Link added successfully!")
+            sethandle("");
+            setLinks([{ text: "", url: "" }]); 
+            setlinkImages("");
         } else {
             toast.error("Failed to add link.")
         }
