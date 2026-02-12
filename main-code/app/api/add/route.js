@@ -16,12 +16,18 @@ export async function POST(request) {
     if (!client) {
       return Response.json({ success: false, error: "Database not connected" }, { status: 500 })
     }
+
+    // If the handle is already claimed, you cannot create the bittree
+    const doc = await collection.findOne({handle: body.handle})
+    if (doc){
+      return Response.json({ success: false, error: true, message: 'This Bittree already exists!', result: null })
+    }
+
     const db = client.db("linktree")
     const collection = db.collection("links")
 
     const result = await collection.insertOne({
       "handle": body.handle,
-      "linkText": body.linkText,
       "links": body.links,
       "linkImages": body.linkImages
     })
