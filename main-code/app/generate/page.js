@@ -2,10 +2,12 @@
 import React from 'react'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { useSearchParams } from 'next/navigation';
 import 'react-toastify/dist/ReactToastify.css';
 
 const generate = () => {
-    const [handle, sethandle] = useState("");
+    const searchParams = useSearchParams()
+    const [handle, sethandle] = useState(searchParams.get("handle") || "");
     const [links, setLinks] = useState([{ text: "", url: "" }]);
     const [link, setlink] = useState("");
     const [linkImages, setlinkImages] = useState("");
