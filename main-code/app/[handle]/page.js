@@ -35,21 +35,55 @@ export default async function Page({ params }) {
     //     "linkImages": "https://avatars.githubusercontent.com/u/188772850?v=4&size=64"
     // }
 
-    return <div className="w-full h-[105vh] flex flex-col justify-center items-center bg-[#4e8341cb] text-[#d6ed2af1]">
-        <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-2 px-1.5 gap-2">
-            <div className='w-[99%] h-[25%] flex flex-col justify-center items-center'>
-                <img src={item.linkImages} alt="img" className="w-[12%] h-[82%] rounded-[40%]" />
-                <h1 className='text-2xl font-bold'>{item.handle}</h1>
-            </div>
-            <div className="w-[99%] h-[90%] flex flex-row justify-center items-center">
-                <div className="w-[50%] h-full flex flex-col justify-start items-center gap-2 overflow-y-scroll scrollbar-hide">
-                    {item.links.map((item, index) => {
-                        return <Link key={index} href={item.url}><div className="bg-purple-100 text-blue-900 py-4 shadow-lg px-2 min-w-96 flex justify-center rounded-md my-3">
-                            {item.text}
-                        </div></Link>
-                    })}
+    return (
+        <div className="w-full min-h-screen bg-background flex flex-col justify-center items-center p-4 py-20 relative overflow-hidden">
+            {/* Background Accents */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent/10 rounded-full blur-[120px]"></div>
+
+            <div className="w-full max-w-2xl glass rounded-[3rem] p-8 lg:p-12 flex flex-col items-center gap-10 animate-slide-up relative z-10">
+                <header className="flex flex-col items-center gap-6 text-center">
+                    <div className="relative group">
+                        <div className="absolute -inset-1 bg-linear-to-r from-primary to-accent rounded-full blur opacity-40 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        <img
+                            src={item.linkImages}
+                            alt={item.handle}
+                            className="relative w-32 h-32 rounded-full object-cover border-4 border-background/50 shadow-2xl"
+                        />
+                    </div>
+                    <div className="space-y-1">
+                        <h1 className="text-3xl font-bold text-foreground">@{item.handle}</h1>
+                        <p className="text-muted-foreground flex items-center justify-center gap-2">
+                            linktr.ee/{item.handle}
+                        </p>
+                    </div>
+                </header>
+
+                <div className="w-full space-y-4 max-h-[50vh] overflow-y-auto pr-2 scrollbar-hide">
+                    {item.links.map((link, index) => (
+                        <Link
+                            key={index}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group block w-full stagger-1"
+                        >
+                            <div className="w-full py-5 px-6 rounded-2xl bg-muted/30 border border-glass-border glass shadow-lg flex justify-between items-center transition-all duration-300 hover:scale-[1.03] hover:bg-muted/50 hover:border-primary/50 text-foreground font-semibold">
+                                <span>{link.text}</span>
+                                <svg className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity -rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                        </Link>
+                    ))}
                 </div>
+
+                <footer className="mt-4">
+                    <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+                        Create your own LinkTree
+                    </Link>
+                </footer>
             </div>
         </div>
-    </div>
+    );
 }

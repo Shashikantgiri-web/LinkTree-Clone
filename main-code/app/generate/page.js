@@ -11,7 +11,6 @@ const GenerateContent = () => {
     const router = useRouter()
     const [handle, sethandle] = useState(searchParams.get("handle") || "");
     const [links, setLinks] = useState([{ text: "", url: "" }]);
-    const [link, setlink] = useState("");
     const [linkImages, setlinkImages] = useState("");
 
     const handleChange = (index, text, url) => {
@@ -41,8 +40,6 @@ const GenerateContent = () => {
             "linkImages": linkImages
         });
 
-        console.log(raw);
-
         const requestOptions = {
             method: "POST",
             headers: myHeaders,
@@ -64,43 +61,96 @@ const GenerateContent = () => {
     }
 
     return (
-        <>
-            <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnFocusLoss draggable pauseOnHover theme="dark" />
+        <div className="w-full min-h-screen bg-background py-20 px-4">
+            <ToastContainer position="bottom-right" theme="dark" />
 
-            <section className='w-full h-auto grid grid-cols-2 items-center gap-2.5 bg-[#e9c0e9] text-[#261d39]  justify-center' style={{ display: 'grid', justifyItems: 'center', alignItems: 'center' }}>
-                <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-1 px-1.5 gap-2">
-                    <div className='w-[99%] h-10 flex justify-center items-start'>
-                        <h1 className='text-2xl font-bold'>Generate Your LinkTree</h1>
-                    </div>
-                    <div className='w-[99%] h-30 flex flex-col justify-start items-start'>
-                        <h2 className='text-xl font-semibold'>Step 1: Claim Your Handle</h2>
-                        <div className="my-4 w-[60%] flex flex-col gap-2.5">
-                            <input type="text" placeholder='choose your handle' value={handle || ""} onChange={(e) => sethandle(e.target.value)} className='w-[99%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+            <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                <div className="glass rounded-[2.5rem] p-8 lg:p-12 space-y-10 animate-slide-up">
+                    <header className="space-y-2">
+                        <h1 className="text-3xl font-bold text-foreground">Generate Your LinkTree</h1>
+                        <p className="text-muted-foreground">Customize your bio link in minutes.</p>
+                    </header>
+
+                    <div className="space-y-8">
+                        {/* Step 1 */}
+                        <div className="space-y-4">
+                            <h2 className="text-xl font-semibold text-primary flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm">1</span>
+                                Claim Your Handle
+                            </h2>
+                            <input
+                                type="text"
+                                placeholder="choose-your-handle"
+                                value={handle || ""}
+                                onChange={(e) => sethandle(e.target.value)}
+                                className="w-full h-14 px-6 rounded-2xl glass-input text-foreground font-medium outline-none"
+                            />
                         </div>
-                    </div>
-                    <div className='w-[99%] min-h-35 max-h-auto flex flex-col justify-start items-start gap-2.5 overflow-y-scroll scrollbar-hide'>
-                        <h2 className='text-xl font-semibold'>Step 2: Add Your Links</h2>
-                        {links.map((items, index) => {
-                            return <div key={index} className="my-4 w-[99%] flex flex-row gap-2.5">
-                                <input type="text" placeholder='Enter link text' value={items.text || ""} onChange={(e) => handleChange(index, e.target.value, items.url)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                                <input type="text" placeholder='Enter link' value={items.url || ""} onChange={(e) => handleChange(index, items.text, e.target.value)} className='w-[34%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
+
+                        {/* Step 2 */}
+                        <div className="space-y-4">
+                            <h2 className="text-xl font-semibold text-primary flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm">2</span>
+                                Add Your Links
+                            </h2>
+                            <div className="space-y-4 max-h-[30vh] overflow-y-auto pr-2 scrollbar-hide">
+                                {links.map((items, index) => (
+                                    <div key={index} className="flex flex-col sm:flex-row gap-3 animate-fade-in">
+                                        <input
+                                            type="text"
+                                            placeholder="Label (e.g. GitHub)"
+                                            value={items.text || ""}
+                                            onChange={(e) => handleChange(index, e.target.value, items.url)}
+                                            className="flex-1 h-12 px-4 rounded-xl glass-input text-sm outline-none"
+                                        />
+                                        <input
+                                            type="text"
+                                            placeholder="URL"
+                                            value={items.url || ""}
+                                            onChange={(e) => handleChange(index, items.text, e.target.value)}
+                                            className="flex-2 h-12 px-4 rounded-xl glass-input text-sm outline-none"
+                                        />
+                                    </div>
+                                ))}
                             </div>
-                        })}
-                        <button className='w-[30%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => addLink()}>+ Add Link</button>
-                    </div>
-                    <div className='w-[99%] h-42.5 flex flex-col justify-start items-start gap-2.5'>
-                        <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
-                        <div className="my-4 w-[99%] flex flex-col gap-2.5">
-                            <input type="text" placeholder='Enter picture URL' value={linkImages || ""} onChange={(e) => setlinkImages(e.target.value)} className='w-[65%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <button className='disabled:bg-pink-200 w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink()} disabled={!handle || !links.length || !linkImages}>Submit your linktree</button>
+                            <button
+                                className="text-sm font-bold text-accent hover:underline flex items-center gap-2 p-2"
+                                onClick={() => addLink()}
+                            >
+                                + Add another link
+                            </button>
+                        </div>
+
+                        {/* Step 3 */}
+                        <div className="space-y-4">
+                            <h2 className="text-xl font-semibold text-primary flex items-center gap-2">
+                                <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm">3</span>
+                                Profile Image
+                            </h2>
+                            <input
+                                type="text"
+                                placeholder="Paste picture URL here"
+                                value={linkImages || ""}
+                                onChange={(e) => setlinkImages(e.target.value)}
+                                className="w-full h-14 px-6 rounded-2xl glass-input text-foreground font-medium outline-none"
+                            />
                         </div>
                     </div>
+
+                    <button
+                        onClick={() => submitLink()}
+                        disabled={!handle || !links.length || !linkImages}
+                        className="w-full h-16 rounded-2xl bg-linear-to-r from-primary to-accent text-white font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed shadow-xl shadow-primary/20"
+                    >
+                        Publish Your LinkTree
+                    </button>
                 </div>
-                <div className="w-[99%] h-[105vh] flex justify-center items-center overflow-y-hidden">
-                    <img src="/generate.png" alt="generate-img" className="w-[99%] h-[99%]" />
+
+                <div className="hidden lg:flex justify-center items-center animate-fade-in stagger-2">
+                    <img src="/generate.png" alt="Preview Interface" className="w-[90%] max-w-lg drop-shadow-2xl animate-float" />
                 </div>
-            </section>
-        </>
+            </div>
+        </div>
     )
 }
 

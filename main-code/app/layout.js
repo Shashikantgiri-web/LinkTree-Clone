@@ -15,8 +15,11 @@ const geistMono = localFont({
 });
 
 export const metadata = {
- title: "LinkTree - Your favorite link sharing site",
+  title: "LinkTree - Your favorite link sharing site",
   description: "We brought a revolution in link sharing",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -25,9 +28,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="w-[98vw] h-[900vh] flex flex-col justify-start items-center relative bg-black text-white">
+        <div className="min-h-screen flex flex-col justify-start items-center relative overflow-x-hidden">
           <Navbar />
-        {children}
+          <main className="w-full flex-1 flex flex-col animate-fade-in">
+            {children}
+          </main>
         </div>
       </body>
     </html>

@@ -6,32 +6,47 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter()
   const [text, setText] = useState("")
-  const createTree = () => { 
+  const createTree = () => {
     router.push(`/generate?handle=${text}`)
   }
   return (
-    <main className="w-full h-auto flex flex-col justify-start items-center gap-10 bg-white text-black">
-      <section className="w-full h-[105vh] flex flex-row justify-start items-center bg-[#254f1a] text-[#d2e823]">
-        <div className="w-[50%] h-[80%] flex flex-col justify-center items-end pl-20 gap-2.5">
-          <h1 className="w-full h-[50%] flex justify-center items-end text-[73px] h1-font">A link in bio built for you.</h1>
-          <p className="w-full h-[15%] flex justify-center items-center font-[17px] section-1-p">Join 70M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.</p>
-          <div className="w-full h-[35%] flex flex-row justify-start items-start gap-4">
-            <input type="text" name="text" id="handle" value={text} onChange={(e)=> setText(e.target.value)} placeholder="linktr.ee/" className="w-[60%] h-12.5 rounded-[10px] bg-white border border-gray-300 px-4 py-2 text-gray-500 " />
-            <button onClick={()=> createTree()} className="w-[40%] h-12.5 rounded-[10px] bg-[#ec74f7] text-white border border-gray-300 px-4 py-2 ">Get Started</button>
+    <main className="w-full min-h-screen flex flex-col justify-start items-center bg-background text-foreground">
+      <section className="w-full flex flex-col lg:flex-row justify-center items-center py-20 px-6 lg:px-20 gap-12 overflow-hidden">
+        <div className="flex-1 flex flex-col justify-center items-start gap-8 animate-slide-up">
+          <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight bg-clip-text text-transparent bg-linear-to-r from-primary via-accent to-pink-500">
+            A link in bio built for you.
+          </h1>
+          <p className="text-lg lg:text-xl text-muted-foreground max-w-2xl">
+            Join 70M+ people using Linktree for their link in bio. One link to help you share everything you create, curate and sell from your Instagram, TikTok, Twitter, YouTube and other social media profiles.
+          </p>
+          <div className="w-full max-w-md flex flex-col sm:flex-row gap-4 stagger-1 animate-fade-in">
+            <div className="relative flex-1">
+              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">linktr.ee/</span>
+              <input
+                type="text"
+                name="text"
+                id="handle"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="yourname"
+                className="w-full h-14 pl-24 pr-4 rounded-2xl glass-input outline-none text-foreground font-medium"
+              />
+            </div>
+            <button
+              onClick={() => createTree()}
+              className="h-14 px-8 rounded-2xl bg-primary text-primary-foreground font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+            >
+              Get Started
+            </button>
           </div>
         </div>
-        <div className="w-[50%] h-[80%] flex justify-center items-center overflow-y-hidden">
-          <img src="/section-1-img.png" alt="section-1-img" className="w-[80%] h-115"/>
+        <div className="flex-1 flex justify-center items-center animate-fade-in stagger-2">
+          <div className="relative">
+            <div className="absolute -inset-1 bg-linear-to-r from-primary to-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
+            <img src="/section-1-img.png" alt="LinkTree Demo" className="relative w-full max-w-lg drop-shadow-2xl animate-float" />
+          </div>
         </div>
       </section>
-      {/* <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section>
-      <section></section> */}
     </main>
   );
 }
