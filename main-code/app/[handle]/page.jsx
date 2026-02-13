@@ -30,9 +30,10 @@ export default async function Page({ params }) {
     // const collection = db.collection("links")
 
     return <div className="w-full h-[105vh] flex justify-start items-center bg-[#4e8341cb] text-[#d6ed2af1]">
-        <div className="w-[80%] h-[77vh] flex flex-row justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-1 px-1.5 gap-2">
-            <div className='w-[99%] h-[10%] flex justify-center items-start'>
-                <img src={item.linkImages} alt="img" className="w-[40%] h-[95%] rounded-2xl" />
+        <div className="w-[80%] h-[77vh] flex flex-col justify-center items-center bg-transparent border-2 border-pink-300 rounded-3xl p-1 px-1.5 gap-2">
+            <div className='w-[99%] h-[20%] flex flex-col justify-center items-center'>
+                <img src={item.linkImages} alt="img" className="w-[12%] h-[82%] rounded-[40%]" />
+                <h1 className='text-2xl font-bold'>{item.handle}</h1>
             </div>
             <div className="w-[99%] h-[90%] flex flex-row justify-center items-center"></div>
         </div>
