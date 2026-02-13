@@ -46,12 +46,12 @@ const generate = () => {
             redirect: "follow"
         };
 
-        const r = await fetch("https://linktree-pink-eight.vercel.app/api/add", requestOptions)
+        const r = await fetch("/api/add", requestOptions)
         const result = await r.json()
         if (result.success) {
             toast.success("Link added successfully!")
             sethandle("");
-            setLinks([]); 
+            setLinks([]);
             setlinkImages("");
         } else {
             toast.error(result.message)
