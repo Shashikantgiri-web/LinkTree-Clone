@@ -1,8 +1,8 @@
 // import { redirect } from "next/navigation"
-import clientPromise from "@/lib/mongodb"
+// import clientPromise from "@/lib/mongodb"
 
 
-export default async function handle({ params }) {
+export default async function Page({ params }) {
     const handle = params.handle
     // const client = await clientPromise
     // if (!client) {
