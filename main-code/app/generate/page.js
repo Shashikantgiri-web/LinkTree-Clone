@@ -24,7 +24,6 @@ const generate = () => {
     };
 
     const addLink = () => {
-        // setLinks([...links, { text: "", url: "" }]);
         setLinks(links.concat([{ text: "", url: "" }]));
     }
 
@@ -52,7 +51,7 @@ const generate = () => {
         if (result.success) {
             toast.success("Link added successfully!")
             sethandle("");
-            setLinks([{ text: "", url: "" }]); 
+            setLinks([]); 
             setlinkImages("");
         } else {
             toast.error(result.message)
