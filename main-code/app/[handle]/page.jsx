@@ -38,7 +38,7 @@ export default async function Page({ params }) {
             <div className="w-[99%] h-[90%] flex flex-row justify-center items-center">
                 <div className="w-[50%] h-full flex flex-col justify-start items-center gap-2">
                     {item.links.map((item, index)=>{
-                    return <Link  key={index} href= {item.url}><div className="bg-purple-100 py-4 shadow-lg px-2 min-w-96 flex justify-center rounded-md my-3">
+                    return <Link  key={index} href= {item.url}><div className="bg-purple-100 text-blue-900 py-4 shadow-lg px-2 min-w-96 flex justify-center rounded-md my-3">
                        {item.text} 
                     </div></Link> 
                 })}
