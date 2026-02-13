@@ -1,11 +1,11 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { useSearchParams } from 'next/navigation';
 import 'react-toastify/dist/ReactToastify.css';
 
-const generate = () => {
+const GenerateContent = () => {
     const searchParams = useSearchParams()
     const [handle, sethandle] = useState(searchParams.get("handle") || "");
     const [links, setLinks] = useState([{ text: "", url: "" }]);
@@ -98,6 +98,14 @@ const generate = () => {
                 </div>
             </section>
         </>
+    )
+}
+
+const generate = () => {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <GenerateContent />
+        </Suspense>
     )
 }
 
