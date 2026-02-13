@@ -2,12 +2,13 @@
 import React, { Suspense } from 'react';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import 'react-toastify/dist/ReactToastify.css';
 
 const GenerateContent = () => {
     const searchParams = useSearchParams()
+    const router = useRouter()
     const [handle, sethandle] = useState(searchParams.get("handle") || "");
     const [links, setLinks] = useState([{ text: "", url: "" }]);
     const [link, setlink] = useState("");
@@ -56,6 +57,7 @@ const GenerateContent = () => {
             sethandle("");
             setLinks([]);
             setlinkImages("");
+            router.push(`/${handle}`)
         } else {
             toast.error(result.message)
         }
@@ -90,7 +92,7 @@ const GenerateContent = () => {
                         <h2 className='text-xl font-semibold'>Step 3: Add Picture and Description</h2>
                         <div className="my-4 w-[99%] flex flex-col gap-2.5">
                             <input type="text" placeholder='Enter picture URL' value={linkImages || ""} onChange={(e) => setlinkImages(e.target.value)} className='w-[65%] h-11.25 pl-2.5 rounded-3xl bg-[#00489dd6] text-white focus:ring-pink-400' />
-                            <Link href={`/${handle}`}><button className='disabled:bg-pink-200 w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink()} disabled={!handle || !links.length || !linkImages}>Submit your linktree</button></Link>
+                            <button className='disabled:bg-pink-200 w-[40%] h-11.25 rounded-3xl bg-pink-400 text-white font-bold hover:bg-pink-500' onClick={() => submitLink()} disabled={!handle || !links.length || !linkImages}>Submit your linktree</button>
                         </div>
                     </div>
                 </div>
