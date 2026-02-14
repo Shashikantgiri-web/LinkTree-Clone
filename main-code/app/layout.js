@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -19,6 +18,7 @@ export const metadata = {
   description: "We brought a revolution in link sharing",
   icons: {
     icon: "/favicon.png",
+    shortcut: "/favicon.png",
   },
 };
 
