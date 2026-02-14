@@ -43,7 +43,7 @@ export default function Home() {
         <div className="flex-1 flex justify-center items-center animate-fade-in stagger-2">
           <div className="relative">
             <div className="absolute -inset-1 bg-linear-to-r from-primary to-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
-            <img src="/section-1-img.png" alt="LinkTree Demo" className="relative w-full max-w-lg drop-shadow-2xl animate-float" />
+            <img src="/home-icon.png" alt="LinkTree Demo" className="relative w-full max-w-lg drop-shadow-2xl animate-float" />
           </div>
         </div>
       </section>

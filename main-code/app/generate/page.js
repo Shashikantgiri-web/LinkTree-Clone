@@ -147,7 +147,7 @@ const GenerateContent = () => {
                 </div>
 
                 <div className="hidden lg:flex justify-center items-center animate-fade-in stagger-2">
-                    <img src="/generate.png" alt="Preview Interface" className="w-[90%] max-w-lg drop-shadow-2xl animate-float" />
+                    <img src="/generate-icons.png" alt="Preview Interface" className="w-[90%] max-w-lg drop-shadow-2xl animate-float" />
                 </div>
             </div>
         </div>
